@@ -76,7 +76,7 @@ async def on_chat_start():
     )
 
     # Initialize LangChain workflow
-    api_key = "AIzaSyBN7W70FQWLd3tm446YWw5uA5ufZNOpJIc"  # Replace with a valid API key
+    api_key = "AIzaSyB"  # Replace with a valid API key
     gemini_llm = GeminiLLM(api_key)
     prompt = ChatPromptTemplate.from_messages([
         (
