@@ -12,3 +12,6 @@
 
 # Activate Virtual env for windows
 - .venv\Scripts\activate.bat
+
+
+![myimage-alt-tag]([url-to-image](https://github.com/dhananjaysinghar/Python-OpenAI-LLM/blob/main/src/image.png))
