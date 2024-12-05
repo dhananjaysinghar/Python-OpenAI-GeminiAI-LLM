@@ -26,7 +26,7 @@ class GeminiLLM(Runnable):
 
 db_uri = "mysql+mysqlconnector://test:password@localhost:3306/test_db"
 db = SQLDatabase.from_uri(db_uri)
-api_key = "<key>"
+api_key = "<gemini_ai_key>"
 gemini_llm = GeminiLLM(api_key)
 
 
@@ -64,9 +64,8 @@ async def on_message(message: cl.Message):
     print(f"message: {message.content}")
     sql_chain = cl.user_session.get("sql_chain")
 
-    template = """
-            Based on the table schema below, question. SQL query and SQL response, write a natural language response:. 
-            {schema}
+    template = """The answer to the user's question is response. Please respond suitable for a 
+    report or formal presentation and markdown formatted. based on user question, do not give any other info other than response
 
             Question = {question}
             SQL Query: {query}
@@ -84,4 +83,4 @@ async def on_message(message: cl.Message):
     response = full_chain.invoke({"question": message.content})
     await cl.Message(content=response).send()
 
-# chainlit run src/com_gemini_ai_example/service/gemini_ai_service.py
+# chainlit run src/com_gemini_ai_example/service/gemini_ai_service_2.py
