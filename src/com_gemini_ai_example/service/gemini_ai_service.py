@@ -32,18 +32,21 @@ gemini_llm = GeminiLLM(api_key)
 
 
 def get_schema(_):
-    return db.get_table_info()
+    return db.get_table_info(table_names=["EMP", "DEPT", "SALGRADE", "BONUS"])
 
 
 def run_query(query):
-    return db.run(query)
+    res = db.run(query)
+    return res
 
 
 memory: ConversationBufferMemory
 
 
 def get_history(_):
-    return memory.load_memory_variables({})["history"]
+    data = memory.load_memory_variables({})["history"]
+    # print(">>> History:", data)
+    return data
 
 
 @cl.on_chat_start
@@ -107,4 +110,4 @@ async def on_message(message: cl.Message):
     memory.chat_memory.add_ai_message(response)
     await cl.Message(content=response).send()
 
-# chainlit run src/com_gemini_ai_example/service/gemini_ai_service.py
+# chainlit run src/com_gemini_ai_example/service/gemini_ai_service_2.py
